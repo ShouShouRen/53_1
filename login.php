@@ -25,20 +25,36 @@ session_start();
                     <form class="p-4" action="login_check.php" method="post">
                         <div>
                             <label for="">帳號</label>
-                            <input type="text" name="user" class="form-control my-2" require>
+                            <input type="text" name="user" class="form-control my-2" required>
+                            <?php if (isset($_SESSION['error']) && $_SESSION['error'] === 'account'): ?>
+                            <div class="text-danger">帳號有誤</div>
+                            <?php endif; ?>
                         </div>
                         <div>
                             <label for="">密碼:</label>
-                            <input type="password" name="pw" class="form-control my-2" require>
+                            <input type="password" name="pw" class="form-control my-2" required>
+                            <?php if (isset($_SESSION['error']) && $_SESSION['error'] === 'password'): ?>
+                            <div class="text-danger">密碼有誤</div>
+                            <?php endif; ?>
                         </div>
                         <div class="my-2">
                             <label for="">驗證碼:</label>
+                            <input type="text" name="captcha" class="form-control my-2" required>
+                            <?php if (isset($_SESSION['error']) && $_SESSION['error'] === 'captcha'): ?>
+                            <div class="text-danger">驗證碼有誤</div>
+                            <?php endif; ?>
+                            <img src="captcha.php" alt="captcha">
+                            <input type="text" name="captcha" required>
                         </div>
                         <div class="row justify-content-between mx-1 my-4">
                             <div class="btn btn-outline-dark">重新產生</div>
                             <input type="submit" class="btn btn-dark" value="確認登入">
                         </div>
                     </form>
+                    <?php
+                        unset($_SESSION['error']);
+                        unset($_SESSION['failCount']);
+                    ?>
                 </div>
             </div>
         </div>
