@@ -44,7 +44,6 @@ session_start();
                             <div class="text-danger">驗證碼有誤</div>
                             <?php endif; ?>
                             <img src="captcha.php" alt="captcha">
-                            <input type="text" name="captcha" required>
                         </div>
                         <div class="row justify-content-between mx-1 my-4">
                             <div class="btn btn-outline-dark">重新產生</div>
@@ -53,7 +52,6 @@ session_start();
                     </form>
                     <?php
                         unset($_SESSION['error']);
-                        unset($_SESSION['failCount']);
                     ?>
                 </div>
             </div>
