@@ -18,7 +18,6 @@ try {
             header("Location: login.php");
             exit;
         } else {
-            // 驗證碼判斷
             if ($_POST['captcha'] !== $_SESSION['captcha']) {
                 $_SESSION['error'] = 'captcha';
                 header("Location: login.php");
