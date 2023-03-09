@@ -43,10 +43,10 @@ session_start();
                             <?php if (isset($_SESSION['error']) && $_SESSION['error'] === 'captcha'): ?>
                             <div class="text-danger">驗證碼有誤</div>
                             <?php endif; ?>
-                            <img src="captcha.php" alt="captcha">
+                            <img src="captcha.php" alt="">
                         </div>
                         <div class="row justify-content-between mx-1 my-4">
-                            <div class="btn btn-outline-dark">重新產生</div>
+                            <div class="btn btn-outline-dark" id="refresh">重新產生</div>
                             <input type="submit" class="btn btn-dark" value="確認登入">
                         </div>
                     </form>
@@ -58,5 +58,8 @@ session_start();
         </div>
     </div>
 </body>
+<script src="./js/jquery-3.6.3.min.js"></script>
+<script src="./js/bootstrap.js"></script>
+<script src="./js/function.js"></script>
 
 </html>
