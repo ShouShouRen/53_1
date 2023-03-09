@@ -14,3 +14,9 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+table{
+  border-collapse: collapse;
+}
+td.selected{
+  background-color: #fff;
+}
