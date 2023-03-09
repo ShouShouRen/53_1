@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $max_attempts = 3;
 if (!isset($_SESSION['attempts'])) {
     $_SESSION['attempts'] = 0;
@@ -41,7 +40,6 @@ try {
             exit;
         }
     }
-    
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
