@@ -14,7 +14,6 @@ $(function () {
         $(this).removeClass("selected");
       }
     });
-
     $("#validate").click(function () {
       if (selectedCells.length === 2) {
         const row1 = Math.floor(selectedCells[0] / 2);
@@ -25,29 +24,11 @@ $(function () {
           (row1 === row2 && Math.abs(col1 - col2) === 1) ||
           (col1 === col2 && Math.abs(row1 - row2) === 1)
         ) {
-          $.ajax({
-            url: "check_login.php",
-            method: "POST",
-            data: {
-              status: "success",
-            },
-            success: function (response) {
-              alert("登入成功！");
-              location.href = "index.php";
-            },
-          });
+          alert("登入成功！");
+          location.href = "index.php";
         } else {
-          $.ajax({
-            url: "check_login.php",
-            method: "POST",
-            data: {
-              status: "fail",
-            },
-            success: function (response) {
-              alert("二次驗證錯誤！");
-              location.href = "login.php";
-            },
-          });
+          alert("二次驗證錯誤！");
+          location.href = "login.php";
         }
       }
     });

@@ -10,11 +10,6 @@
         // $stmt = $pdo->prepare($sql);
         // $stmt->execute();
         // $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $log_sql = "SELECT * FROM login_log ORDER BY log_time DESC";
-        $log_stmt = $pdo->query($log_sql);
-        while ($row = $log_stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo "{$row['log_time']} {$row['username']} {$row['log_action']} {$row['log_status']}<br>";
-        }
     }catch(PDOException $e){
         echo $e->getMessage();
     }
