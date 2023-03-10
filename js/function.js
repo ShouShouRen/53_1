@@ -35,9 +35,6 @@ $(function () {
               alert("登入成功！");
               location.href = "index.php";
             },
-            error: function () {
-              alert("發生錯誤！");
-            },
           });
         } else {
           $.ajax({
@@ -49,9 +46,6 @@ $(function () {
             success: function (response) {
               alert("二次驗證錯誤！");
               location.href = "login.php";
-            },
-            error: function () {
-              alert("發生錯誤！");
             },
           });
         }

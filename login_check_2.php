@@ -1,26 +1,3 @@
-<?php
-// require_once("pdo.php");
-// session_start();
-// if(isset($_SESSION["AUTH"]["user"])){
-//     $user = $_SESSION["AUTH"]["user"];
-//     $log_time = date('Y-m-d H:i:s');
-//     $log_status = '登入成功';
-//     $log_message = "使用者 {$user} 登入成功，時間為 {$log_time}";
-//     $log_sql = "INSERT INTO login_log (user, time, status, message) 
-//                 VALUES (?, ?, ?, ?)";
-//     $log_stmt = $pdo->prepare($log_sql);
-//     $log_stmt->execute([$user, $log_time, $log_status, $log_message]);
-// } else {
-//     $user = $_POST['user'];
-//     $log_time = date('Y-m-d H:i:s');
-//     $log_status = '登入失敗';
-//     $log_message = "使用者 {$user} 登入失敗，時間為 {$log_time}";
-//     $log_sql = "INSERT INTO login_log (user, time, status, message) 
-//                 VALUES (?, ?, ?, ?)";
-//     $log_stmt = $pdo->prepare($log_sql);
-//     $log_stmt->execute([$user, $log_time, $log_status, $log_message]);
-// }
-?>
 <!DOCTYPE html>
 <html lang="zh-Hant-tw">
 
