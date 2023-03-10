@@ -23,3 +23,7 @@ table{
 td.selected{
   background-color: #fff;
 }
+.border-start{
+  border-left: 10px solid #fff;
+  padding-left: 10px;
+}

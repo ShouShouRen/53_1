@@ -1,33 +1,29 @@
 <?php
-    require_once("pdo.php");
     session_start();
-    if(!isset($_SESSION["AUTH"])){
-        header("Location: login.php");
+    if(!isset($_SESSION["AUTH"]) || $_SESSION["AUTH"]["role"] != 0){
+        header("Location:login.php");
     }
     try{
-        extract($_POST);
-        // $sql = "SELECT * FROM products ORDER BY products.time DESC";
-        // $stmt = $pdo->prepare($sql);
-        // $stmt->execute();
-        // $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        require_once("pdo.php");
+        $sql = "SELECT * FROM users";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
     }catch(PDOException $e){
         echo $e->getMessage();
     }
 ?>
 <!DOCTYPE html>
-<html lang="zh-Hant-tw">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
-    <title>商店首頁</title>
+    <title>會員管理後台管理模組</title>
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <a href="index.php" class="navbar-brand">
                 <img src="./images/logos.png" class="logo mx-3" alt="">
@@ -51,7 +47,25 @@
             </div>
         </div>
     </nav>
+    <div class="container" style="margin-top:86px;">
+        <div class="pt3 pb-5">
+            <div class="row justify-content-between align-items-center">
+                <h5 class="text-center text-white border-start font-weight-bolder">會員管理</h5>
+                <div class="d-flex justify-content-around align-items-center text-white py-3 w-25">
+                    <input type="number" value="60" id="timeInput" class="form-control w-25">
+                    <button id="setTimeBtn" class="btn btn-sm btn-outline-light">設定</button>
+                    <span id="countdown">60秒</span>
+                    <button id="resetTimeBtn" class="btn btn-sm btn-outline-light">重新計時</button>
+                </div>
+            </div>
+            <div class="p-4 bg-white rounded-lg shadow-lg">
+                <div class="row justify-content-between align-items-center mb-3">
+                    <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#adduser">新增使用者</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="./js/jquery-3.6.3.min.js"></script>
 <script src="./js/bootstrap.js"></script>
-
 </html>
