@@ -8,6 +8,9 @@ body {
   background: radial-gradient(circle, #9e7679 0%, #594545 100%);
   height: 100vh;
 }
+label{
+  margin-bottom: 0;
+}
 .d-center {
   position: absolute;
   top: 50vh;
