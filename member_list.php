@@ -140,7 +140,7 @@
                         <td>
                             <?php if ($row["id"] == 1) { ?>
                             <?php } elseif ($row["id"] == $_SESSION["AUTH"]["id"]) { ?>
-                            <span class="text-secondary">切換權限</span>
+                            <span class="text-secondary">權限修改</span>
                             <?php } else { ?>
                             <a class="btn btn-outline-secondary"
                                 href="switch_role.php?role=<?= $row["role"]; ?>&id=<?= $row["id"]; ?>">權限修改</a>
