@@ -33,7 +33,9 @@ $(function () {
       }
     });
   }
+
   check();
+
   $(".btn-edit").click(function () {
     let member_id = $(this).data("id");
     $.ajax({
@@ -52,11 +54,13 @@ $(function () {
       },
     });
   });
+
   $("#save").click(function () {
     let user = $("#user").val();
     let user_name = $("#user_name").val();
     let pw = $("#pw").val();
     let id = $("#id").val();
+
     let data = {
       user: user,
       user_name: user_name,
@@ -67,7 +71,8 @@ $(function () {
       url: "save_member.php",
       type: "POST",
       data: JSON.stringify(data),
-      dataType: "json",
+      contentType: "application/json",
+      // dataType: "json",
       success: function (response) {
         alert("儲存成功");
         window.location.reload();

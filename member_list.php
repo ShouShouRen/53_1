@@ -15,6 +15,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,8 +24,9 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>會員管理後台管理模組</title>
 </head>
+
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <a href="index.php" class="navbar-brand">
                 <img src="./images/logos.png" class="logo mx-3" alt="">
@@ -82,13 +84,15 @@
                                                 </div>
                                                 <div class="py-2">
                                                     <label for="">使用者姓名</label>
-                                                    <input type="text" name="user_name" class="form-control my-2" require>
+                                                    <input type="text" name="user_name" class="form-control my-2"
+                                                        require>
                                                 </div>
                                                 <div class="py-2">
                                                     <label for="">使用者密碼</label>
                                                     <input type="password" name="pw" class="form-control" require>
                                                 </div>
-                                                <div class="text-right"><input type="submit" value="註冊" class="btn btn-success"></div>
+                                                <div class="text-right"><input type="submit" value="註冊"
+                                                        class="btn btn-success"></div>
                                             </form>
                                         </div>
                                     </div>
@@ -97,18 +101,19 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <form action="search_member.php" id="search-member" class="d-flex justify-content-end align-items-center">
-                        <div class="d-flex px-2">
-                            <label for="">升冪</label>
-                            <input type="radio" name="use" id="" value="up">
-                        </div>
-                        <div class="d-flex px-2">
-                            <label for="">降冪</label>
-                            <input type="radio" name="use" id="" value="down">
-                        </div>
-                        <input type="search" name="search" id="search-input" placeholder="請輸入使用者資料"
-                            class="form-control w-50 mr-2">
-                        <button type="submit" class="btn btn-secondary">查詢</button>
+                        <form action="search_member.php" id="search-member"
+                            class="d-flex justify-content-end align-items-center">
+                            <div class="d-flex px-2">
+                                <label for="">升冪</label>
+                                <input type="radio" name="use" id="" value="up">
+                            </div>
+                            <div class="d-flex px-2">
+                                <label for="">降冪</label>
+                                <input type="radio" name="use" id="" value="down">
+                            </div>
+                            <input type="search" name="search" id="search-input" placeholder="請輸入使用者資料"
+                                class="form-control w-50 mr-2">
+                            <button type="submit" class="btn btn-secondary">查詢</button>
                         </form>
                     </div>
                 </div>
@@ -125,60 +130,69 @@
 
                     </tbody>
                     <?php foreach($result as $row) { ?>
-                        <tr class="show-all">
-                            <td><?= $row["user_id"]; ?></td>
-                            <td><?= $row["user"]; ?></td>
-                            <td><?= $row["pw"]; ?></td>
-                            <td><?= $row["user_name"]; ?></td>
-                            <td><?php switch ($row["role"]) { case 0: echo "管理員"; break; case 1: echo "一般使用者"; break; } ?></td>
-                            <td>
-                                <?php if ($row["id"] == 1) { ?>
-                                <?php } elseif ($row["id"] == $_SESSION["AUTH"]["id"]) { ?>
-                                <span class="text-secondary">切換權限</span>
-                                <?php } else { ?>
-                                    <a class="btn btn-outline-secondary" href="switch_role.php?role=<?= $row["role"]; ?>&id=<?= $row["id"]; ?>">權限修改</a>
-                                <?php } ?>
-                                <?php if ($row["id"] == 1) { ?>
-                                    <!-- 隱藏修改的連結 -->
-                                <?php } else { ?>
-                                    <button class="btn btn-outline-secondary btn-edit" data-id="<?= $row['id'];?>" data-toggle="modal" data-target="#edit">修改</button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="edit">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="editLabel">修改使用者內容</h5>
-                                                    <button class="close" data-dismiss="modal">
-                                                        <span aria-hidden="true">&times</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="container-sm px-5 py-4">
-                                                        <form>
-                                                            <div class="py-2">
-                                                                <label for="">使用者帳號</label>
-                                                                <input type="text" id="user" name="user" class="form-control" require>
-                                                            </div>
-                                                            <div class="py-2">
-                                                                <label for="">使用者姓名</label>
-                                                                <input type="text" id="user_name" name="user_name" class="form-control" require>
-                                                            </div>
-                                                            <div class="py-2">
-                                                                <label for="">使用者密碼</label>
-                                                                <input type="password" id="pw" name="pw" class="form-control" require>
-                                                            </div>
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                                                            <button type="button" class="btn btn-success" id="save">儲存修改</button>
-                                                        </form>
+                    <tr class="show-all">
+                        <td><?= $row["user_id"]; ?></td>
+                        <td><?= $row["user"]; ?></td>
+                        <td><?= $row["pw"]; ?></td>
+                        <td><?= $row["user_name"]; ?></td>
+                        <td><?php switch ($row["role"]) { case 0: echo "管理員"; break; case 1: echo "一般使用者"; break; } ?>
+                        </td>
+                        <td>
+                            <?php if ($row["id"] == 1) { ?>
+                            <?php } elseif ($row["id"] == $_SESSION["AUTH"]["id"]) { ?>
+                            <span class="text-secondary">切換權限</span>
+                            <?php } else { ?>
+                            <a class="btn btn-outline-secondary"
+                                href="switch_role.php?role=<?= $row["role"]; ?>&id=<?= $row["id"]; ?>">權限修改</a>
+                            <?php } ?>
+                            <?php if ($row["id"] == 1) { ?>
+                            <!-- 隱藏修改的連結 -->
+                            <?php } else { ?>
+                            <button class="btn btn-outline-secondary btn-edit" data-id="<?= $row['id'];?>"
+                                data-toggle="modal" data-target="#edit">修改</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="edit">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="editLabel">修改使用者內容</h5>
+                                            <button class="close" data-dismiss="modal">
+                                                <span aria-hidden="true">&times</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container-sm px-5 py-4">
+                                                <form>
+                                                    <div class="py-2">
+                                                        <label for="">使用者帳號</label>
+                                                        <input type="text" id="user" name="user" class="form-control"
+                                                            require>
                                                     </div>
-                                                </div>
+                                                    <div class="py-2">
+                                                        <label for="">使用者姓名</label>
+                                                        <input type="text" id="user_name" name="user_name"
+                                                            class="form-control" require>
+                                                    </div>
+                                                    <div class="py-2">
+                                                        <label for="">使用者密碼</label>
+                                                        <input type="password" id="pw" name="pw" class="form-control"
+                                                            require>
+                                                    </div>
+                                                    <input type="hidden" name="id" id="id">
+                                                </form>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">取消</button>
+                                                <button type="button" class="btn btn-success" id="save">儲存修改</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="btn btn-outline-danger" href="delete_member.php?id=<?= $row["id"] ?>" onclick="return confirm('確定要刪除?')">刪除</a>
-                                <?php } ?>
-                            </td>
-                        </tr>
+                                </div>
+                            </div>
+                            <a class="btn btn-outline-danger" href="delete_member.php?id=<?= $row["id"] ?>"
+                                onclick="return confirm('確定要刪除?')">刪除</a>
+                            <?php } ?>
+                        </td>
+                    </tr>
                     <?php } ?>
                 </table>
                 <!-- Modal -->
@@ -196,15 +210,16 @@
                             </div>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                             <button type="button" class="btn btn-primary" id="confirmBtn">確定</button>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 </body>
 <script src="./js/jquery-3.6.3.min.js"></script>
 <script src="./js/bootstrap.js"></script>
 <script src="./js/function.js"></script>
+
 </html>
