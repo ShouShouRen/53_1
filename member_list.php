@@ -76,12 +76,18 @@
                                     <div class="modal-body">
                                         <div class="container-sm px-5 py-4">
                                             <form action="register_store.php" method="post">
-                                                <label for="">帳號</label>
-                                                <input type="text" name="user" class="form-control my-2" require>
-                                                <label for="">使用者姓名</label>
-                                                <input type="text" name="user_name" class="form-control my-2" require>
-                                                <label for="">密碼</label>
-                                                <input type="password" name="pw" class="form-control my-2" require>
+                                                <div class="py-2">
+                                                    <label for="">使用者帳號</label>
+                                                    <input type="text" name="user" class="form-control my-2" require>
+                                                </div>
+                                                <div class="py-2">
+                                                    <label for="">使用者姓名</label>
+                                                    <input type="text" name="user_name" class="form-control my-2" require>
+                                                </div>
+                                                <div class="py-2">
+                                                    <label for="">使用者密碼</label>
+                                                    <input type="password" name="pw" class="form-control" require>
+                                                </div>
                                                 <div class="text-right"><input type="submit" value="註冊" class="btn btn-success"></div>
                                             </form>
                                         </div>
@@ -135,11 +141,65 @@
                                 <?php if ($row["id"] == 1) { ?>
                                     <!-- 隱藏修改的連結 -->
                                 <?php } else { ?>
-                            <?php } ?>
+                                    <button class="btn btn-outline-secondary btn-edit" data-id="<?= $row['id'];?>" data-toggle="modal" data-target="#edit">修改</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="edit">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="editLabel">修改使用者內容</h5>
+                                                    <button class="close" data-dismiss="modal">
+                                                        <span aria-hidden="true">&times</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-sm px-5 py-4">
+                                                        <form>
+                                                            <div class="py-2">
+                                                                <label for="">使用者帳號</label>
+                                                                <input type="text" id="user" name="user" class="form-control" require>
+                                                            </div>
+                                                            <div class="py-2">
+                                                                <label for="">使用者姓名</label>
+                                                                <input type="text" id="user_name" name="user_name" class="form-control" require>
+                                                            </div>
+                                                            <div class="py-2">
+                                                                <label for="">使用者密碼</label>
+                                                                <input type="password" id="pw" name="pw" class="form-control" require>
+                                                            </div>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                                            <button type="button" class="btn btn-success" id="save">儲存修改</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="btn btn-outline-danger" href="delete_member.php?id=<?= $row["id"] ?>" onclick="return confirm('確定要刪除?')">刪除</a>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php } ?>
                 </table>
+                <!-- Modal -->
+                <div class="modal fade" id="confirmModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editLabel">修改使用者內容</h5>
+                                <button class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">&times</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>您的操作時間已到，系統將在 <span id="countdownModal">5</span> 秒後自動登出。請問您是否要繼續操作？</p>
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary" id="confirmBtn">確定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
